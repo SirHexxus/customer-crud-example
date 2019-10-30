@@ -33,10 +33,10 @@ const orm = {
     },
 
     // INSERT INTO given table VALUES (new burger)
-    updateOne: (name, eaten, callback) => {
-        const s = "UPDATE " + tableName + " SET devoured = ? WHERE burger_name = ?";
+    updateOne: (id, eaten, callback) => {
+        const s = "UPDATE " + tableName + " SET devoured = ? WHERE id = ?";
 
-        connection.query(s, [eaten, name], (err, result) => {
+        connection.query(s, [eaten, id], (err, result) => {
             if(err) throw err;
             callback(result);
         });

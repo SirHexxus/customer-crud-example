@@ -12,8 +12,8 @@ const burger = {
             cb(res);
         });
     },
-    update: (burgerName, condition, cb) => {
-        orm.update(burgerName, condition, (res) => {
+    update: (id, condition, cb) => {
+        orm.update(id, condition, (res) => {
             cb(res);
         });
     }
