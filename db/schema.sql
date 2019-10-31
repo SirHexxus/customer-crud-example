@@ -14,7 +14,7 @@ CREATE TABLE burgers (
     -- burger_name: a string --
     burger_name VARCHAR(255) NOT NULL,
     -- devoured: a boolean --
-    devoured BOOLEAN DEFAULT false,
+    devoured BOOLEAN NOT NULL DEFAULT false,
     -- Set "id" as Primary Key --
     PRIMARY KEY(id)
 );

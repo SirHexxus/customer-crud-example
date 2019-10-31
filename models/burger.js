@@ -8,12 +8,15 @@ const burger = {
         });
     },
     insert: (newBurger, cb) => {
-        orm.create(newBurger, (res) => {
+        orm.insertOne(newBurger, (res) => {
             cb(res);
         });
     },
     update: (id, condition, cb) => {
-        orm.update(id, condition, (res) => {
+        //  FOR DEBUGGING
+        // console.log('burger.js ' + id);
+        // console.log('burger.js ' + condition);
+        orm.updateOne(id, condition, (res) => {
             cb(res);
         });
     }
