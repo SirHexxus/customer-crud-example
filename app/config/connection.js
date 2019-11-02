@@ -14,17 +14,23 @@ if(dotenv.error) {
 //  Setting up our connection information
 const source = {
   localhost: {
-    host: 'localhost',
-    port: 3306,
-    user: 'baf675a5934e51',
-    password: '398dedf3',
-    database: 'burgers_db'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB
   }
 };
 
 
 //  Creating our connection
-const connection = mysql.createConnection(source.localhost);
+let connection;
+
+if(process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection(source.localhost);
+}
 
 
 //  Connecting to the database.
