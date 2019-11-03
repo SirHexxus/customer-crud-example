@@ -22,12 +22,21 @@ const source = {
   }
 };
 
+const jawsDBSource = {
+  jawsDB: {
+    host: 'arfo8ynm6olw6vpn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    port: 3306,
+    user: 'csfxw3p5rjwlpcrv',
+    password: 'mq3n9iy0upzjjv0p',
+    database: 'y5c0lsa5ara5euml'
+  }
+};
 
 //  Creating our connection
 let connection;
 
 if(process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
+  connection = mysql.createConnection(jawsDBSource.jawsDB);
 } else {
   connection = mysql.createConnection(source.localhost);
 }
