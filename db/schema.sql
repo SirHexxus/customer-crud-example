@@ -1,11 +1,7 @@
--- Clear out any existing database that matches the name, so that we don't have overlap --
-DROP DATABASE IF EXISTS y5c0lsa5ara5euml;
-
--- Create database --
-CREATE DATABASE y5c0lsa5ara5euml;
-
 -- Switch to or use the `y5c0lsa5ara5euml` --
 USE y5c0lsa5ara5euml;
+
+DROP TABLE IF EXISTS burgers;
 
 -- Create a `burgers` table with these fields:
 CREATE TABLE burgers (
