@@ -2,24 +2,21 @@
 const orm = require('../config/orm.js');
 
 const burger = {
-    all: (cb) => {
-        orm.selectAll((res) => {
-            cb(res);
-        });
-    },
-    insert: (newBurger, cb) => {
-        orm.insertOne(newBurger, (res) => {
-            cb(res);
-        });
-    },
-    update: (id, condition, cb) => {
-        //  FOR DEBUGGING
-        // console.log('burger.js ' + id);
-        // console.log('burger.js ' + condition);
-        orm.updateOne(id, condition, (res) => {
-            cb(res);
-        });
-    }
+  all: (cb) => {
+    orm.selectAll((res) => cb(res));
+  },
+  insert: (newBurger, cb) => {
+    orm.insertOne(newBurger, (res) => cb(res));
+  },
+  update: (id, condition, cb) => {
+    //  FOR DEBUGGING
+    // console.log('burger.js update', {id});
+    // console.log('burger.js update', {condition});
+    orm.updateOne(id, condition, (res) => cb(res));
+  },
+  delete: (id, cb) => {
+    orm.deleteOne(id, (res) => cb(res));
+  }
 };
 
 // Export the database functions for the controller (catsController.js).

@@ -36,8 +36,8 @@ const orm = {
   updateOne: (id, eaten, callback) => {
     const s = `UPDATE ${tableName} SET devoured = ? WHERE id = ?`;
     //  FOR DEBUGGING
-    // console.log('orm.js ' + id);
-    // console.log('orm.js ' + eaten);
+    // console.log('orm.js updateOne', {id});
+    // console.log('orm.js updateOne',{eaten});
     connection.query(s, [eaten, id], (err, result) => {
       if (err) {
         console.error(err);
@@ -47,8 +47,29 @@ const orm = {
         return result; //.status(404).end()
       }
       //  FOR DEBUGGING
-      // console.log(result);
+      // console.log('orm.js updateOne', {result});
       callback(result); //.status(200).end()
+    });
+  },
+
+  // DELETE FROM given table VALUES (new burger)
+  deleteOne: (id, callback) => {
+    const s = `DELETE FROM ${tableName} WHERE id = ?`;
+    //  FOR DEBUGGING
+    // console.log('orm.js deleteOne', {id});
+
+    connection.query(s, [id], (err, result) => {
+      console.log(result);
+      if (err) {
+        console.error(err);
+        return result;
+      } else if (result.affectedRows === 0) {
+        console.info('changed nothing');
+        return result;
+      }
+      //  FOR DEBUGGING
+      // console.log('orm.js deleteOne', {result});
+      callback(result);
     });
   }
 };

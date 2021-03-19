@@ -3,12 +3,12 @@
 // *********************************************************************************
 
 //  Requiring mysql and dotenv packages
-const mysql = require("mysql");
+const mysql = require('mysql');
 const dotenv = require('dotenv').config();
 
 //  Listens for Configuration Errors in `dotenv`
-if(dotenv.error) {
-    console.log(dotenv.error);
+if (dotenv.error) {
+  console.error(dotenv.error);
 }
 
 //  Setting up our connection information
@@ -35,20 +35,19 @@ const jawsDBSource = {
 //  Creating our connection
 let connection;
 
-if(process.env.JAWSDB_URL) {
+if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(jawsDBSource.jawsDB);
 } else {
   connection = mysql.createConnection(source.localhost);
 }
 
-
 //  Connecting to the database.
 connection.connect((err) => {
   if (err) {
-    console.error("error connecting: " + err.stack);
+    console.error('error connecting: ' + err.stack);
     return;
   }
-  console.log("connected as id# " + connection.threadId);
+  console.info(`connected as id# ${connection.threadId}`);
 });
 
 //  Exporting our connection
