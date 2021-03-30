@@ -9,6 +9,7 @@
 - Handlebars.js
 - jQuery
 - CSS
+- Bootstrap
 ### Deployment
 - Heroku
 
