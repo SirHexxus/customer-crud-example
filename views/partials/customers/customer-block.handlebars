@@ -1,24 +1,27 @@
-<li>
-    {{customer_name}}
+<li class="card text-center">
+    <div class="card-body">
+        <div class="card-header">
+            <h3 class="card-title">{{customer_name}}</h3>
 
-    <button class="change-active" data-id="{{id}}" data-newactive="{{newActive}}">
-        {{#if active_customer}}Deactivate Customer{{else}}Reactivate Customer{{/if}}
-    </button>
-    <button class="delete-customer" data-id="{{id}}">x</button>
+            <button class="change-active btn btn-dark btn-sm" data-id="{{id}}" data-newactive="{{newActive}}">
+                {{#if active_customer}}Deactivate Customer{{else}}Reactivate Customer{{/if}}
+            </button>
+            <button class="delete-customer btn btn-danger btn-sm" data-id="{{id}}">x</button>
+        </div>
 
-    <ul>
-        <li>
-            Business Address: {{business_address}}
-        </li>
-        <li>
-            Billing Address: {{billing_address}}
-        </li>
-        <li>
-            Contact Name: {{contact_name}}
-        </li>
-        <li>
-            Normal Service Rate: ${{service_rate}}
-        </li>
-    </ul>
-
+        <ul class="card-text">
+            <li>
+                Business Address: {{business_address}}
+            </li>
+            <li>
+                Billing Address: {{billing_address}}
+            </li>
+            <li>
+                Contact Name: {{contact_name}}
+            </li>
+            <li>
+                Normal Service Rate: ${{service_rate}}
+            </li>
+        </ul>
+    </div>
 </li>
