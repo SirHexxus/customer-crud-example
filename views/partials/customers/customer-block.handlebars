@@ -1,0 +1,24 @@
+<li>
+    {{customer_name}}
+
+    <button class="change-active" data-id="{{id}}" data-newactive="{{newActive}}">
+        {{#if active_customer}}Deactivate Customer{{else}}Reactivate Customer{{/if}}
+    </button>
+    <button class="delete-customer" data-id="{{id}}">x</button>
+
+    <ul>
+        <li>
+            Business Address: {{business_address}}
+        </li>
+        <li>
+            Billing Address: {{billing_address}}
+        </li>
+        <li>
+            Contact Name: {{contact_name}}
+        </li>
+        <li>
+            Normal Service Rate: ${{service_rate}}
+        </li>
+    </ul>
+
+</li>

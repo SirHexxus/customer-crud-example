@@ -1,33 +1,35 @@
+/** @format */
+
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
-  $('.change-eaten').on('click', function (event) {
+  $('.change-active').on('click', function (e) {
     const id = $(this).data('id');
-    const newEaten = $(this).data('neweaten');
+    const newActive = $(this).data('newactive');
     //  FOR DEBUGGING
-    // console.log('clientSide.js change-eaten', {id});
-    // console.log('clientSide.js change-eaten', {newEaten});
-    const newEatenState = {
-      eaten: newEaten
+    console.log('clientSide.js change-active', { id });
+    console.log('clientSide.js change-active', { newActive });
+    const newActiveState = {
+      active_customer: newActive
     };
-    // console.log('clientSide.js change-eaten', {newEatenState});
+    console.log('clientSide.js change-active', { newActiveState });
     // Send the PUT request.
-    $.ajax('/api/burgers/' + id, {
+    $.ajax(`/api/customers/${id}`, {
       type: 'PUT',
-      data: newEatenState
+      data: newActiveState
     }).then(() => {
-      console.info(`changed devoured to ${newEaten}`);
+      console.info(`changed active_customer to ${newActive}`);
       // Reload the page to get the updated list
       location.reload();
     });
   });
 
-  $('.delete-burger').on('click', function (event) {
+  $('.delete-customer').on('click', function (e) {
     const id = $(this).data('id');
     //  FOR DEBUGGING
     // console.log('clientSide.js delete-burger', {id});
 
     // Send the DELETE request.
-    $.ajax(`/api/burgers/${id}`, { type: 'DELETE' }).then(() => {
+    $.ajax(`/api/customers/${id}`, { type: 'DELETE' }).then(() => {
       console.info(`Deleted ${id}`);
       // Reload the page to get the updated list
       location.reload();
@@ -38,16 +40,23 @@ $(function () {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
-    const newBurger = {
-      name: $('#burgName').val().trim()
+    const newCustomer = {
+      name: $('#customerName').val().trim(),
+      busAddress: $('#businessAddress').val().trim(),
+      billAddress: $('#billingAddress').val().trim(),
+      contact: $('#contactName').val().trim(),
+      rate: $('#serviceRate').val().trim()
     };
 
+    //  FOR DEBUGGING
+    console.log({ newCustomer });
+
     // Send the POST request.
-    $.ajax('/api/burgers', {
+    $.ajax('/api/customers', {
       type: 'POST',
-      data: newBurger
+      data: newCustomer
     }).then(() => {
-      console.info('created new burger');
+      console.info('created new customer');
       // Reload the page to get the updated list
       location.reload();
     });
