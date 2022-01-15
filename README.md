@@ -11,7 +11,8 @@
 - CSS
 - Bootstrap
 ### Deployment
-- Heroku
+- [Heroku](https://gentle-ocean-82738.herokuapp.com/)
+
 
 ---
 
